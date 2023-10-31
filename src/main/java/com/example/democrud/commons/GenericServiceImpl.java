@@ -13,6 +13,15 @@ public abstract class GenericServiceImpl<T, ID extends Serializable> implements 
 
 	@Override
 	public T save(T entity) {
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
+		System.out.println("Este es un ejemplo de duplicado");
 		return getDao().save(entity);
 	}
 
