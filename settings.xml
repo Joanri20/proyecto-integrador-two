@@ -1,0 +1,76 @@
+<settings>
+
+    <servers>        
+        <server>
+            <id>repo-snapshots</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>nexus</id>
+            <mirrorOf>*</mirrorOf>
+            <url>http://190.25.234.130:51235/repository/repo-group/</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+    <profile>
+      <id>nexus</id>
+      <!--Enable snapshots for the built in central repo to direct -->
+      <!--all requests to nexus via the mirror -->
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://190.25.234.130:51235/repository/repo-group/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+     <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://190.25.234.130:51235/repository/repo-group/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+<!--
+<profile>
+    <id>snapshots</id>
+    <repositories>
+    <repository>
+        <id>repo-group</id>
+        <name>repo-snapshots</name>
+        <url>http://localhost:8081/repository/repo-releases/</url>    
+    </repository>
+    </repositories>
+</profile>-->
+
+
+<!-- 
+    <pluginGroups>
+        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+    </pluginGroups>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                Optional URL to server. Default value is http://localhost:9000
+                <sonar.host.url>
+                  http://localhost:9000
+                </sonar.host.url> 
+            </properties>
+        </profile>
+     </profiles> -->
+
+
+    <!-- Otras configuraciones pueden seguir aquí -->
+</settings>
+

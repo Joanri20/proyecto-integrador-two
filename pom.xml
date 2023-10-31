@@ -110,10 +110,10 @@
                 <version>${maven-deploy-plugin.version}</version> <!-- Ajusta la versión si es necesario -->
                 <configuration>
                     <altDeploymentRepository>
-                        snapshot::default::http://localhost:8081/repository/repo-snapshots/
+                        snapshot::default::http://190.25.234.130:51235/repository/repo-snapshots/
                     </altDeploymentRepository>
                     <altReleaseDeploymentRepository>
-                        release::default::http://localhost:8081/repository/repo-releases/
+                        release::default::http://190.25.234.130:51235/repository/repo-releases/
                     </altReleaseDeploymentRepository>
                 </configuration>
             </plugin>
