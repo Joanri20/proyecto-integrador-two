@@ -116,7 +116,6 @@
                     </altReleaseDeploymentRepository>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
