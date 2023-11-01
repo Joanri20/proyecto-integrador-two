@@ -11,7 +11,7 @@
         <mirror>
             <id>nexus</id>
             <mirrorOf>*</mirrorOf>
-            <url>http://localhost:8081/repository/repo-group/</url>
+            <url>http://190.25.234.130:51235/repository/repo-group/</url>
         </mirror>
     </mirrors>
 
@@ -23,7 +23,7 @@
       <repositories>
         <repository>
           <id>central</id>
-          <url>http://localhost:8081/repository/repo-group/</url>
+          <url>http://190.25.234.130:51235/repository/repo-group/</url>
           <releases><enabled>true</enabled></releases>
           <snapshots><enabled>true</enabled></snapshots>
         </repository>
@@ -31,7 +31,7 @@
      <pluginRepositories>
         <pluginRepository>
           <id>central</id>
-          <url>http://localhost:8081/repository/repo-group/</url>
+          <url>http://190.25.234.130:51235/repository/repo-group/</url>
           <releases><enabled>true</enabled></releases>
           <snapshots><enabled>true</enabled></snapshots>
         </pluginRepository>
