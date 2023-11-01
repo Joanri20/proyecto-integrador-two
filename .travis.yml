@@ -14,7 +14,7 @@ script:
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
-  - mvn sonar:sonar -Dsonar.projectKey=com.example:demo-crud -Dsonar.host.url=http://localhost:9000 -Dsonar.login=94bd8bfc47b0d89661ba8a173b83227852b371eb
+  - mvn sonar:sonar -Dsonar.projectKey=com.example:demo-crud -Dsonar.host.url=http://190.25.234.130:51234 -Dsonar.login=94bd8bfc47b0d89661ba8a173b83227852b371eb
 
 deploy:
   provider: script
