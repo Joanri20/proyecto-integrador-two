@@ -2,6 +2,21 @@ language: java
 jdk:
   - openjdk11
 
+cache:
+  directories:
+    - $HOME/.m2
+
+install:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -s settings.xml
+
 script:
-  - mvn clean install
-  - mvn sonar:sonar
+  - mvn clean verify -s settings.xml
+
+after_success:
+  - mvn clean test jacoco:report coveralls:report
+  - mvn sonar:sonar -Dsonar.projectKey=com.example:demo-crud -Dsonar.host.url=http://localhost:9000 -Dsonar.login=94bd8bfc47b0d89661ba8a173b83227852b371eb
+
+deploy:
+  provider: script
+  script: "cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy"
+  skip_cleanup: true
