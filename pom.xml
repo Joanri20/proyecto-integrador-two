@@ -8,12 +8,12 @@
         <snapshotRepository>
             <id>repo-snapshots</id>
             <name>repo-snapshots</name>
-            <url>http://190.25.234.130:51235/repository/repo-snapshots/</url>
+            <url>http://localhost:8081/repository/repo-snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>repo-releases</id>
             <name>repo-releases</name>
-            <url>http://190.25.234.130:51235/repository/repo-releases/</url>
+            <url>http://localhost:8081/repository/repo-releases/</url>
         </repository>
     </distributionManagement>
 
@@ -31,7 +31,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <sonar.host.url>http://190.25.234.130:51234/</sonar.host.url>
+        <sonar.host.url>http://localhost:9000/</sonar.host.url>
         <sonar.exclusions>src/main/java/com/example/democrud/commons/BaseController.java
         </sonar.exclusions>
         <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
@@ -107,10 +107,10 @@
                 <version>${maven-deploy-plugin.version}</version> <!-- Ajusta la versión si es necesario -->
                 <configuration>
                     <altDeploymentRepository>
-                        snapshot::default::http://190.25.234.130:51235/repository/repo-snapshots/
+                        snapshot::default::http://localhost:8081/repository/repo-snapshots/
                     </altDeploymentRepository>
                     <altReleaseDeploymentRepository>
-                        release::default::http://190.25.234.130:51235/repository/repo-releases/
+                        release::default::http://localhost:8081/repository/repo-releases/
                     </altReleaseDeploymentRepository>
                 </configuration>
             </plugin>
