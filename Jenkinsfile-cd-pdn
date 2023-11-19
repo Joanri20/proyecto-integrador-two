@@ -20,40 +20,46 @@
         }
 
         stage('Pruebas Performance') {
-                    powershell 'echo "Realizando pruebas de performance"'
-                    powershell 'timeout /t 2'
-                    powershell 'echo "Realizando prueba de estres: 30%"'
-                    powershell 'timeout /t 2'
-                    powershell 'echo "Realizando prueba de estres: 77%"'
-                    powershell 'timeout /t 2'
-                    powershell 'echo "Realizando prueba de estres: 95%"'
-                    powershell 'timeout /t 1'
-                    powershell 'echo "Analisis de pruebas 100%"'
+            powershell '''
+                Write-Host "Realizando pruebas de performance"
+                Start-Sleep -s 2
+                Write-Host "Realizando prueba de estres: 30%"
+                Start-Sleep -s 2
+                Write-Host "Realizando prueba de estres: 77%"
+                Start-Sleep -s 2
+                Write-Host "Realizando prueba de estres: 95%"
+                Start-Sleep -s 1
+                Write-Host "Analisis de pruebas 100%"
+            '''
         }
 
         stage('Pruebas E2E') {
-            powershell 'echo "Analizando pruebas E2E..."'
-            powershell 'timeout /t 2'
-            powershell 'echo "Porcentaje de analisis: 25%"'
-            powershell 'timeout /t 2'
-            powershell 'echo "Porcentaje de analisis: 55%"'
-            powershell 'timeout /t 2'
-            powershell 'echo "Porcentaje de analisis: 98%"'
-            powershell 'timeout /t 1'
-            powershell 'echo "Analisis de pruebas 100%"'
+            powershell '''
+                Write-Host "Analizando pruebas E2E..."
+                Start-Sleep -s 2
+                Write-Host "Porcentaje de analisis: 25%"
+                Start-Sleep -s 2
+                Write-Host "Porcentaje de analisis: 55%"
+                Start-Sleep -s 2
+                Write-Host "Porcentaje de analisis: 98%"
+                Start-Sleep -s 1
+                Write-Host "Analisis de pruebas 100%"
+            '''
         }
 
         stage('Aprobación Manual Despliegue') {
-            powershell 'echo "Se requiere una aprobación del Lider técnico o PO"'
-            powershell 'echo "¿Desea continuar con el despliegue?"'
-            powershell 'pause'
-            powershell 'echo "Aprobacion aceptada"'
+            powershell '''
+                Write-Host "Se requiere una aprobación del Lider técnico o PO"
+                Read-Host "¿Desea continuar con el despliegue?"
+                Start-Sleep -s 2
+                Write-Host "Aprobacion aceptada"
+            '''
         }
 
 
         stage('Deploy PDN') {
-            powershell 'echo "Iniciando despliegue..."'
             powershell '''
+                Write-Host "Iniciando despliegue..."
                 if (docker ps -a -f name=proyectointegradortwo) {
                     docker stop proyectointegradortwo
                     docker rm proyectointegradortwo
