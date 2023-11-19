@@ -2419,6 +2419,12 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+.btn-primaryTwo {
+  color: #fff;
+  background-color: #5A0F5D;
+  border-color: #007bff;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #007bff;
