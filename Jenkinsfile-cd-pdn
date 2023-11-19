@@ -47,11 +47,11 @@
             '''
         }
 
-        stage('Aprobación Manual Despliegue') {
+        stage('Aprobacion Manual Despliegue') {
             powershell '''
-                Write-Host "Se requiere una aprobación del Lider técnico o PO"
-                Read-Host "¿Desea continuar con el despliegue?"
-                Start-Sleep -s 2
+                Write-Host "Se requiere una aprobacion del Lider tecnico o PO"
+                Write-Host "¿Desea continuar con el despliegue?"
+                Start-Sleep -s 3
                 Write-Host "Aprobacion aceptada"
             '''
         }
