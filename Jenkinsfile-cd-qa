@@ -35,13 +35,13 @@
 
         stage('Deploy') {
             powershell '''
-                if (docker ps -a -f name=proyectointegradortwoQA) {
-                    docker stop proyectointegradortwoQA
-                    docker rm proyectointegradortwoQA
+                if (docker ps -a -f name=proyectointegradortwoqa) {
+                    docker stop proyectointegradortwoqa
+                    docker rm proyectointegradortwoqa
                 }
 
-                docker build -t proyectointegradortwoQA .
-                docker run -d -p 8084:80 --name proyectointegradortwoQA proyectointegradortwoQA
+                docker build -t proyectointegradortwoqa .
+                docker run -d -p 8084:80 --name proyectointegradortwoqa proyectointegradortwoqa
             '''
         }
 
