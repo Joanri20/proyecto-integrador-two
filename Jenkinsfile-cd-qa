@@ -1,0 +1,48 @@
+    node {
+        stage('Checkout') {
+            git 'https://github.com/Joanri20/proyecto-integrador-two.git'
+        }
+
+        stage('Install dependencies') {
+            powershell 'mvn clean install'
+        }
+
+        stage('Compile') {
+            powershell 'mvn compile'
+        }
+
+        stage('Unit and Integration Tests') {
+            powershell 'mvn test'
+        }
+
+        stage('Static Code Analysis') {
+            withSonarQubeEnv('sonarqube'){
+                powershell 'mvn clean package sonar:sonar'
+            }
+        }
+        stage("Quality Gate"){
+            timeout(time: 3, unit: 'MINUTES') { // Just in case something goes wrong, pipeline will be killed after a timeout
+                def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+                if (qg.status != 'OK') {
+                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                }
+            }
+        }
+
+        stage('Build Artifact') {
+            powershell 'mvn package'
+        }
+
+        stage('Deploy') {
+            powershell '''
+                if (docker ps -a -f name=proyectointegradortwoQA) {
+                    docker stop proyectointegradortwoQA
+                    docker rm proyectointegradortwoQA
+                }
+
+                docker build -t proyectointegradortwoQA .
+                docker run -d -p 8084:80 --name proyectointegradortwoQA proyectointegradortwoQA
+            '''
+        }
+
+    }
