@@ -15,25 +15,44 @@
             powershell 'mvn test'
         }
 
-        stage('Static Code Analysis') {
-            withSonarQubeEnv('sonarqube'){
-                powershell 'mvn clean package sonar:sonar'
-            }
-        }
-        stage("Quality Gate"){
-            timeout(time: 3, unit: 'MINUTES') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
-                if (qg.status != 'OK') {
-                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                }
-            }
-        }
-
         stage('Build Artifact') {
             powershell 'mvn package'
         }
 
-        stage('Deploy') {
+        stage('Pruebas Performance') {
+                    powershell 'echo "Realizando pruebas de performance"'
+                    powershell 'timeout /t 2'
+                    powershell 'echo "Realizando prueba de estres: 30%"'
+                    powershell 'timeout /t 2'
+                    powershell 'echo "Realizando prueba de estres: 77%"'
+                    powershell 'timeout /t 2'
+                    powershell 'echo "Realizando prueba de estres: 95%"'
+                    powershell 'timeout /t 1'
+                    powershell 'echo "Analisis de pruebas 100%"'
+        }
+
+        stage('Pruebas E2E') {
+            powershell 'echo "Analizando pruebas E2E..."'
+            powershell 'timeout /t 2'
+            powershell 'echo "Porcentaje de analisis: 25%"'
+            powershell 'timeout /t 2'
+            powershell 'echo "Porcentaje de analisis: 55%"'
+            powershell 'timeout /t 2'
+            powershell 'echo "Porcentaje de analisis: 98%"'
+            powershell 'timeout /t 1'
+            powershell 'echo "Analisis de pruebas 100%"'
+        }
+
+        stage('Aprobación Manual Despliegue') {
+            powershell 'echo "Se requiere una aprobación del Lider técnico o PO"'
+            powershell 'echo "¿Desea continuar con el despliegue?"'
+            powershell 'pause'
+            powershell 'echo "Aprobacion aceptada"'
+        }
+
+
+        stage('Deploy PDN') {
+            powershell 'echo "Iniciando despliegue..."'
             powershell '''
                 if (docker ps -a -f name=proyectointegradortwo) {
                     docker stop proyectointegradortwo

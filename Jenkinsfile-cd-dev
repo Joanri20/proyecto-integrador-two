@@ -34,7 +34,7 @@
             powershell 'mvn package'
         }
 
-        stage('Deploy') {
+        stage('Deploy DEV') {
             powershell '''
                 if (docker ps -a -f name=proyectointegradortwodev) {
                     docker stop proyectointegradortwodev
