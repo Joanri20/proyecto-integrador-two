@@ -34,4 +34,16 @@
             powershell 'mvn package'
         }
 
+        stage('Deploy DEV') {
+            powershell '''
+                if (docker ps -a -f name=proyectointegradortwodev) {
+                    docker stop proyectointegradortwodev
+                    docker rm proyectointegradortwodev
+                }
+
+                docker build -t proyectointegradortwodev .
+                docker run -d -p 8085:80 --name proyectointegradortwodev proyectointegradortwodev
+            '''
+        }
+
     }
