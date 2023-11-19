@@ -66,7 +66,7 @@
                 }
 
                 docker build -t proyectointegradortwo .
-                docker run -d -p 8083:80 --name proyectointegradortwo proyectointegradortwo
+                docker run -d -p 8083:8080 --name proyectointegradortwo proyectointegradortwo
             '''
         }
 

@@ -41,7 +41,7 @@
                 }
 
                 docker build -t proyectointegradortwoqa .
-                docker run -d -p 8084:80 --name proyectointegradortwoqa proyectointegradortwoqa
+                docker run -d -p 8084:8080 --name proyectointegradortwoqa proyectointegradortwoqa
             '''
         }
 
