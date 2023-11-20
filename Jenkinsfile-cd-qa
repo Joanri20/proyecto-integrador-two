@@ -38,6 +38,7 @@
                 if (docker ps -a -f name=proyectointegradortwoqa) {
                     docker stop proyectointegradortwoqa
                     docker rm proyectointegradortwoqa
+                    docker image rm proyectointegradortwoqa
                 }
 
                 docker build -t proyectointegradortwoqa .
