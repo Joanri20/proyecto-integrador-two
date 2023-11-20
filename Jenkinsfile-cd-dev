@@ -1,4 +1,5 @@
     node {
+        git branch: "develop", url: 'https://github.com/Joanri20/proyecto-integrador-two'
         stage('Install dependencies') {
             powershell 'mvn clean install'
         }
@@ -35,6 +36,7 @@
                 if (docker ps -a -f name=proyectointegradortwodev) {
                     docker stop proyectointegradortwodev
                     docker rm proyectointegradortwodev
+                    docker image rm proyectointegradortwodev
                 }
 
                 docker build -t proyectointegradortwodev .
