@@ -1,4 +1,5 @@
     node {
+        git branch: "develop", url: 'https://github.com/Joanri20/proyecto-integrador-two'
         stage('Install dependencies') {
             powershell 'mvn clean install'
         }
