@@ -1,8 +1,4 @@
     node {
-        stage('Checkout') {
-            git 'https://github.com/Joanri20/proyecto-integrador-two.git'
-        }
-
         stage('Install dependencies') {
             powershell 'mvn clean install'
         }
