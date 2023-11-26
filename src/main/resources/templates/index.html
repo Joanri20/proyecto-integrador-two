@@ -19,7 +19,7 @@
 				<input type="submit" class="btn btn-success" value="Cerrar sesión">
 			</form>
 		</div>
-		<h2 th:if="${list == null} OR ${list.isEmpty()}">Hola Sam</h2>
+		<h2 th:if="${list == null} OR ${list.isEmpty()}">Versión: 1.0</h2>
 		<div th:if=" ${list != null} AND ${!list.isEmpty()}">
 			<h2>Personas</h2>
 			<table class="table">
