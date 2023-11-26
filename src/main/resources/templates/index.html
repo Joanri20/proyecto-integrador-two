@@ -13,14 +13,13 @@
 		<br>
 		<div>
 			<a href="/home/create" class="btn btn-primary">Agregar</a>
-			<a href="/home/create" class="btn btn-primaryTwo">Nuevo Boton A</a>
 		</div>
 		<div style="margin-top:20px;">
 			<form th:action="@{/logout}" method="post">
 				<input type="submit" class="btn btn-success" value="Cerrar sesión">
 			</form>
 		</div>
-		<h2 th:if="${list == null} OR ${list.isEmpty()}">No hay personas</h2>
+		<h2 th:if="${list == null} OR ${list.isEmpty()}">Hola Sam</h2>
 		<div th:if=" ${list != null} AND ${!list.isEmpty()}">
 			<h2>Personas</h2>
 			<table class="table">
