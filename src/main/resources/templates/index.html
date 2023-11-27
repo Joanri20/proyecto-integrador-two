@@ -16,11 +16,12 @@
 		</div>
 		<div style="margin-top:20px;">
 			<form th:action="@{/logout}" method="post">
-				<input type="submit" class="btn btn-success" value="Cerrar sesión">
+				<input type="submit" class="btn btn-primaryTwo" value="Eliminar Tabla">
+				<input type="submit" class="btn" value="Agregar nuevas tablas">
 			</form>
 		</div>
-		<h2 th:if="${list == null} OR ${list.isEmpty()}">Versión: 1.1</h2>
-		<table class="default">
+		<h2 th:if="${list == null} OR ${list.isEmpty()}">Versión: 1.3</h2>
+		<table>
 			<tr>
 				<th>Hoy</th>
 				<th>Mañana</th>
